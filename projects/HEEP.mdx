@@ -1,0 +1,122 @@
+---
+title: "HEEP"
+date: "2024-06-15"
+summary: "Speculative design and brand identity"
+---
+
+## Introduction
+HEEP is a speculative design project that aims to raise awareness on the potatoes overproduction through a combination of a physical object and a digital platform.
+
+## Sections
+- [· Speculative context](#speculative-context)
+- [· Brand identity](#brand-identity)
+- [· Arduino and WebApp](#arduino-and-webapp)
+
+<h2 id="speculative-context">Speculative context</h2>
+
+As every speculative design project does, HEEP lives in its own futuristic but plausible context too.
+Its name stands for _Holding for the Electrical Energy from Potatoes_ and it consists in a fictionary company that aims to solve,
+at&nbsp;least in part, the potato overproduction problem. Every year, in fact, we waste more than 57mln tons of spuds, but we also
+know that potatoes contain an acid that can lead to the exchange of electrons between a copper and a zinc electrodes,
+resulting in the production of small electric charges. Because of this specific principle, HEEP developed Qubo, a domestic electricity generator powered by potatoes. Activate your audio and watch the brand reel that sums it up down below!
+
+<RoundedVideo src={`/HEEP/heep_reel.mp4`} />
+
+<h2 id="brand-identity">Brand identity</h2>
+
+HEEP's identity, as you've probably already seen from the previous video, aims to reach the broadest audience possible by adopting
+a&nbsp;colorful visual communication and a catchy tone of voice in its copywrite. The main goal, in&nbsp;fact, is&nbsp;involving the greatest number
+of&nbsp;people in HEEP's community, in&nbsp;order to save as many potatoes as&nbsp;possible from being&nbsp;wasted.
+
+<RoundedImage
+  alt={`HEEP's promotional campaign`}
+  title={`HEEP's promotional campaign`}
+  src={`/HEEP/posters.avif`}
+/>
+
+HEEP's users from all over the world are able to contribute to the cause by buying and using Qubo, powering on their favorite modules and lighting up their homes
+while helping the global community, at the same&nbsp;time, in reaching its&nbsp;goal.
+
+<RoundedImage
+  alt={`HEEP's Instagram page`}
+  title={`HEEP's Instagram page`}
+  src={`/HEEP/instagram.avif`}
+  className="!rounded-none"
+/>
+
+As we can see, HEEP’s social communication embraces a colorful and ironic tone, combining transparency with playfulness to engage&nbsp;users and bring them closer to the brand’s mission. This witty tone can be found&nbsp;across all the communication artifacts from&nbsp;HEEP, the&nbsp;products' packagings and the&nbsp;web application, fostering&nbsp;a&nbsp;brand&nbsp;coherency.
+
+<h2 id="arduino-and-webapp">Arduino and Webapp</h2>
+
+We, as HEEP, have also realized a proper working prototype of Qubo using Arduino and other technologies such as PHP to create the relative&nbsp;WebApp.
+More&nbsp;specifically, I've managed to develop the software that powers it&nbsp;all. Here you can take a look at some pictures and code snippets from the&nbsp;project:
+
+<RoundedImage
+  alt={`Functioning Qubo prototype`}
+  title={`Functioning Qubo prototype`}
+  src={`/HEEP/qubo_2.avif`}
+/>
+
+```cpp
+if(digitalRead(15) == HIGH) {
+  if(firstLaunch) {
+    sendData("api_key=" + apiKeyValue
+            + "&action=ins"
+            + "&sessionid=" + currentID
+            + "&genkp=" + genkp
+            + "&npot=" + npot);
+
+    savedData.begin("IDs", false);
+    currentID = savedData.getInt("lastID") + 1;
+    savedData.putInt("lastID", currentID);
+    savedData.end();
+
+    displayFirstPage();
+
+    firstLaunch = false;
+  }
+  ...
+}
+```
+
+This is an extract of code from QuboScreen, a module of the prototype based on ESP32 (the orange one in the previous picture) that sends Qubo's electric
+production data to&nbsp;a&nbsp;database. The database has a key role in making the experience feel complete, in fact it&nbsp;stores a series of&nbsp;informations that every
+user can freely access from their personal area on <a>heepenergia.it</a> (which is no longer available), a sort of a WebApp optimized for mobile
+displays. By&nbsp;registering on the website, each user is able associate their personal Qubo usage session with their own account and see the statistics
+being updated in real time, thanks to QuboScreen and its&nbsp;database&nbsp;integration.
+
+<RoundedImage
+  alt={`HEEP's WebApp`}
+  title={`HEEP's WebApp`}
+  src={`/HEEP/app.avif`}
+/>
+
+Down below, on the other hand, you can read a snippet of PHP code from the login page that checks users'&nbsp;data.
+
+```php
+if(isset($_SESSION['userid'])) {
+  header('location:user_page.php');
+}
+
+if(isset($_POST['login'])) {
+  $username = mysqli_real_escape_string($conn, $_POST['username']);
+  $pass = md5($_POST['password']);
+
+  $select = "SELECT * FROM users WHERE username = '$username' && password = '$pass'";
+  $result = mysqli_query($conn, $select);
+
+  if(mysqli_num_rows($result) > 0) {
+    $userData = $result->fetch_array();
+
+    $_SESSION['username'] = $userData['username'];
+    $_SESSION['userid'] = $userData['userid'];
+    header('location:user_page.php');
+  } else {
+    $error[] = 'Wrong username or password.';
+  }
+};
+```
+
+<p className="!mb-0">This code, specifically, was executed when pressing the login button: in&nbsp;the first instance it&nbsp;checked whether the&nbsp;user was already logged in or not,
+and then it stored in two variables their username and password (hashed using the MD5 algorithm) in order to execute a SELECT query on the database and check the&nbsp;credentials. 
+If correct, the&nbsp;website would have displayed the&nbsp;homepage, otherwise it would have shown an error&nbsp;message.</p>

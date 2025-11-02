@@ -1,0 +1,54 @@
+---
+title: "The Cost of AI"
+date: "2025-06-27"
+summary: "Virtual and physical prototyping"
+---
+
+## Introduction
+_The Cost of AI_ is a virtual reality experience in&nbsp;which the player becomes the "conscience" of&nbsp;an&nbsp;artificial intelligence. Inside a servers room, the player needs to accept or deny a&nbsp;series of&nbsp;prompts received from different users from all over the&nbsp;world. Each choice influences the system’s stability and water&nbsp;consumption, reflecting these changes on&nbsp;the surrounding&nbsp;environment.
+The experience aims to raise awareness about the unseen environmental footprint of modern AI models and encourages a more conscious relationship with&nbsp;them.
+
+## Sections
+- [· Ideation of the project](#ideation-of-the-project)
+- [· Development of the game](#development-of-the-game)
+
+<h2 id="ideation-of-the-project">Ideation of the project</h2>
+
+The project was conceived at a time when generative AI was rapidly expanding with new features, such as image generation on ChatGPT, and even occasional system overloads (e.g. due to the Studio Ghibli styled pictures trend).
+That&nbsp;moment sparked a question: what’s the real cost behind this apparent abundance? _The Cost of AI_ transforms that question into an experience, letting players confront the trade-off between creativity, efficiency, and environmental impact.
+In&nbsp;this&nbsp;immersive experience, through a Meta&nbsp;Quest headset, the&nbsp;player gets teleported into a&nbsp;servers&nbsp;room, representing an AI's conscience.
+
+<RoundedImage
+  alt={`The Cost of AI gameplay`}
+  title={`The Cost of AI gameplay`}
+  src={`/The-Cost-of-AI/intro.avif`}
+/>
+
+At the center of the room, there's a console: here the received prompts are show in&nbsp;form of&nbsp;translucent spheres.
+The&nbsp;player can&nbsp;then read them and pick them up using their&nbsp;hands, and&nbsp;choose whether to&nbsp;discard or&nbsp;accept&nbsp;them. The&nbsp;minigame's goal is to balance the requests, keeping the environment under control. Accepting a&nbsp;large amount of&nbsp;prompts makes the
+servers room overheat, while rejecting too many leads the servers to freeze and the AI to "die".
+
+<h2 id="development-of-the-game">Development of the game</h2>
+
+Developed with Unity and modeled entirely in _Blender_, the experience merges 3D design with interactive programming.
+Through C# scripting, we defined the system’s logic and its dynamic balance between heat and&nbsp;water&nbsp;consumption.
+Thanks to the Meta Quest SDK, players&nbsp;are&nbsp;able to use their hands, instead of controllers, to&nbsp;grab and&nbsp;manage&nbsp;prompts, blurring the boundary between physical gesture and digital consequence.
+
+<RoundedImage
+  alt={`The Cost of AI testing phase`}
+  title={`The Cost of AI testing phase`}
+  src={`/The-Cost-of-AI/testing.avif`}
+  className="aspect-5/3"
+/>
+
+We tested the experience with a group of users, observing how they interacted with the system and interpreted its&nbsp;rules.
+Their feedback revealed some moments of confusion and helped us improve the gestures and responses, turning the learning curve into a more fluid, natural process.
+
+<RoundedImage
+  alt={`The Cost of AI win screen`}
+  title={`The Cost of AI win screen`}
+  src={`/The-Cost-of-AI/victory.avif`}
+/>
+
+<p className="!mb-0">The experience concludes with a printed report, a&nbsp;tangible trace of the player’s&nbsp;choices.
+Alongside personal performance metrics, it&nbsp;presents the&nbsp;actual resource consumption of major AI companies, bridging the gap between virtual responsibility and&nbsp;real-world consequences.</p>

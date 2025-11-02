@@ -1,0 +1,65 @@
+---
+title: "Libra"
+date: "2025-06-05"
+summary: "UX/UI design"
+---
+
+## Introduction
+_Libra_ is a connected smart vase that automates plant care through sensors and a _companion app_. It manages watering autonomously while offering insights and gentle reminders, fostering a mindful connection between people, technology and nature.
+
+## Sections
+- [· 3D modelling](#3d-modelling)
+- [· Mobile app prototyping](#mobile-app-prototyping)
+
+<h2 id="3d-modelling">3D modelling</h2>
+
+The 3D modelling process of Libra was carried out using _Blender_, and aimed to&nbsp;balance functionality with aesthetics ensuring that every functional element, from&nbsp;the&nbsp;water system to the electronic board, seamlessly fit within a&nbsp;minimal&nbsp;silhouette.
+
+<RoundedImage
+  alt={`Libra smart vase`}
+  title={`Libra smart vase`}
+  src={`/Libra/vase.avif`}
+/>
+
+The internal structure includes a ceramic upper vase, a water nebulizer with sponge, a central water tank and&nbsp;a&nbsp;light&#x2011;integrated base which hosts a control board managing the system.
+
+<div className="w-full grid grid-cols-2 gap-2 md:gap-4">
+	<RoundedImage
+	alt={`Libra placed in a home environment`}
+	title={`Libra placed in a home environment`}
+	src={`/Libra/interior.avif`}
+	className="aspect-square"
+	/>
+	<RoundedImage
+	alt={`Libra's section view`}
+	title={`Libra's section view`}
+	src={`/Libra/section.avif`}
+	className="aspect-square p-4 md:p-16 outline outline-zinc-200"
+	/>
+</div>
+
+The water tank can be refilled directly from above the base (between the colored clay vase and the bioplastic base), preserving the _natural gesture of watering_ without requiring any disassembly.
+Designed with simple lines and neutral materials, Libra fits seamlessly into any interior environment.
+
+<h2 id="mobile-app-prototyping">Mobile app prototyping</h2>
+
+The mobile app prototype was developed in Figma, and the design process explored the entire flow from onboarding to plant management.
+During the first login, users are guided through a brief welcoming phase that includes a&nbsp;Wi&#x2011;Fi&nbsp;scan to&nbsp;detect and&nbsp;connect existing Libra vases on the network.
+
+<RoundedImage
+  alt={`Libra's mobile app`}
+  title={`Libra's mobile app`}
+  src={`/Libra/libra.avif`}
+/>
+
+The app is divided into two main sections: _Home_ and _Care_. The Home screen, titled “Your garden,” provides&nbsp;an&nbsp;overview of all connected vases, showing battery levels, remaining water, and quick access to each unit’s controls.
+Tapping on a vase opens a detailed overlay with real-time data and&nbsp;management options such as light and&nbsp;watering settings. From this view, users can also add new plants or vases to their account.
+
+<RoundedImage
+  alt={`Libra's mobile app`}
+  title={`Libra's mobile app`}
+  src={`/Libra/app.avif`}
+  className="!rounded-none"
+/>
+
+<p className="!mb-0">The Care section complements the experience by offering personalized tips and insights tailored to each plant’s specific needs, turning maintenance into a simple and guided process.</p>

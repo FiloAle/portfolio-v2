@@ -1,0 +1,104 @@
+---
+title: "Amazon Fire TVgether"
+date: "2025-06-17"
+summary: "UX/UI design and coding"
+---
+
+## Introduction
+_Amazon Fire TVgether_ is a redesign of the existing _Fire TV_ mobile app, transforming it from a simple remote control into a shared viewing experience.
+The new _TVgether_ feature connects people through their favorite live events, allowing friends to interact and feel closer even when watching from different places.
+
+## Sections
+- [· Research and interviews](#research-and-interviews)
+- [· Concept ideation](#concept-ideation)
+- [· Project development](#project-development)
+
+<h2 id="research-and-interviews">Research and interviews</h2>
+
+Before defining the concept, we conducted interviews to collect qualitative insights and a survey to gather quantitative data.
+This&nbsp;research helped us identify the main pain points of the current co-viewing experience, often tied to shared passions like sports and live events.
+We found out that users constantly switch between the TV and their smartphones, navigating across multiple platforms: _Instagram_ for memes, _Twitter (X)_ for community reactions, and _WhatsApp_ for chatting with friends while watching the same content.
+
+<RoundedImage
+  alt={`Netflix TVgether illustration`}
+  title={`Netflix TVgether illustration`}
+  src={`/Fire-TV/netflix-tvgether.avif`}
+/>
+
+Our findings align with the <a href="https://centridiricerca.unicatt.it/certa-TVgether.pdf" target="_blank">TVgether study by Netflix and Università Cattolica del Sacro Cuore</a>, which shows that co-viewing remains a deeply meaningful practice: shared viewing experiences create opportunities for dialogue, emotional connection and generational exchange.
+By grounding our design in these insights, we shaped Fire TVgether to not just enhance functionality, but to reinforce the social fabric of watching together — where mobile and TV link seamlessly, making friends’ reactions visible on the big screen and turning passive viewing into a shared moment.
+
+<h2 id="concept-ideation">Concept ideation</h2>
+
+To address the _digital chaos_ identified during the research phase, we aimed to bring people together within the existing Fire TV app, allowing them to both control their TV and interact seamlessly.
+By connecting the mobile app and the TV, users can also preview friends’ reactions directly on the big screen, keeping the experience social and fluid without even needing to unlock their phones. The redesign, in fact, also extends to&nbsp;the TV&nbsp;interface, which now displays online friends during broadcasts, reinforcing the _sense of connection_ beyond the screen.
+
+<h2 id="project-development">Project development</h2>
+
+In order to deliver a realistic interaction with the final product, we have developed both a TV prototype and a mobile app one: while first was developed in _Figma_, the latter was built using _Next.js_.
+A custom script on the mobile side simulates keyboard inputs on the computer running the Figma prototype, effectively linking the two environments.
+This&nbsp;setup made it possible to recreate a&nbsp;_realistic connection_ between the phone and the TV, allowing users to&nbsp;experience the prototype as if it were fully functional.
+
+```js
+return new Promise((resolve) => {
+	exec(
+		`osascript -e 'tell application "System Events" to keystroke "${escapedKey}"'`,
+		(error) => {
+			if (error) {
+				console.error(error);
+				return resolve(
+					NextResponse.json(
+						{ error: 'Error during the keystroke simulation' },
+						{ status: 500 }
+					)
+				);
+			}
+
+			resolve(NextResponse.json({ success: true, key }));
+		}
+	);
+});
+```
+
+This piece of code, specifically, is the one that enables the connection between the smartphone and the TV prototype: every action on the app corresponds to a keystroke assigned in the Figma project. The entire project is also available on <a href="https://github.com/FiloAle/fire-tv" target="_blank">GitHub</a>, if you want to try it yourself!
+
+<RoundedImage
+  alt={`Amazon Fire TVgether prototype`}
+  title={`Amazon Fire TVgether prototype`}
+  src={`/Fire-TV/fire-tv.avif`}
+  className="!mb-2 md:!mb-4"
+/>
+
+<div className="w-full grid grid-cols-2 gap-2 md:gap-4">
+	<RoundedImage
+	alt={`Amazon Fire TVgether home screen`}
+	title={`Amazon Fire TVgether home screen`}
+	src={`/Fire-TV/schedule.avif`}
+	className="aspect-square !mt-0"
+	/>
+	<RoundedImage
+	alt={`Amazon Fire TVgether schedule screen`}
+	title={`Amazon Fire TVgether schedule screen`}
+	src={`/Fire-TV/home.avif`}
+	className="aspect-square !mt-0"
+	/>
+</div>
+
+Through the app’s home screen, it's both possible to control the TV remotely and access the _Schedule_ section: a space to browse upcoming live sports events, save favorites, view details and share them with friends.
+In&nbsp;the&nbsp;chat&nbsp;screen, then, we also introduced a dedicated _Quick Reactions_ button to further reduce the interaction gap between users. This feature is designed to break down the barrier that often prevents a smooth and&nbsp;natural&nbsp;experience, letting participants react instantly as if they were physically together.
+
+<RoundedImage
+  alt={`Amazon Fire TVgether testing`}
+  title={`Amazon Fire TVgether testing`}
+  src={`/Fire-TV/testing.avif`}
+/>
+
+To conclude the design phase, we conducted a series of user testing sessions with real participants to refine the&nbsp;overall&nbsp;experience.
+These sessions helped us smooth out unclear interactions, fine-tune the app’s responsiveness, and ensure that every gesture and transition felt as natural and intuitive as possible.
+
+<RoundedVideo src={`/Fire-TV/teaser.mov`} />
+
+As a final step, we created a video concept that summarizes the entire project — from research and ideation to&nbsp;prototyping and&nbsp;testing.
+The video showcases how&nbsp;TVgether bridges distance through shared emotions, turning&nbsp;remote co-viewing into a truly connected and human experience.
+
+<p className="!mb-0">Every footage, logo, picture and audio track used in the project and the final teaser is property of the actual owners (Amazon, Heineken, Deliveroo, Meta, UEFA, FIFA, F1, Weezer) and it's only been used for educational purposes.</p>
