@@ -27,6 +27,7 @@ function ProjectCard({ src, href, title, className = "" }: ProjectCardProps) {
 					src={src}
 					alt={title}
 					fill
+					priority={true}
 					className="object-cover bg-zinc-50 transition-transform ease-in-out duration-500 max-sm:group-active:-translate-y-12 group-hover:-translate-y-12 z-10 rounded-xl"
 				/>
 				<div className="absolute bottom-0 left-0 w-full text-zinc-800 px-4 py-3 sm:pb-3 sm:pt-2.5 z-5 h-12 align-middle flex flex-row justify-between items-center">

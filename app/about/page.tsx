@@ -27,6 +27,7 @@ function Picture({
 				className="absolute -mt-[5%] w-[30%] ms-[28%] select-none pointer-events-none"
 				width={2000}
 				height={1000}
+				priority={true}
 			/>
 			<div className="h-full w-[90%] aspect-3/4">
 				<Image
@@ -34,6 +35,7 @@ function Picture({
 					alt={alt}
 					height={4000}
 					width={3000}
+					priority={true}
 					className="object-cover h-full w-full select-none pointer-events-none rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg bg-zinc-50 outline-3 sm:outline-6 sm:-outline-offset-5 outline-white -outline-offset-2"
 				/>
 			</div>
