@@ -129,15 +129,15 @@ export default function Home() {
 							className="relative max-md:aspect-5/4 md:col-span-2"
 						/>
 						<ProjectCard
-							src="/imgs/Fire-TV/fire-tv.avif"
-							href="/projects/Amazon-Fire-TVgether"
-							title="Amazon Fire TVgether"
+							src="/imgs/Elmo/preview.avif"
+							href="/projects/Elmo"
+							title="Elmo"
 							className="relative aspect-2/1 md:aspect-square"
 						/>
 						<ProjectCard
-							src="/imgs/Il-Giardino-di-Lipari/poster.avif"
-							href="/projects/Il-Giardino-di-Lipari"
-							title="Il Giardino di Lipari"
+							src="/imgs/Fire-TV/fire-tv.avif"
+							href="/projects/Amazon-Fire-TVgether"
+							title="Amazon Fire TVgether"
 							className="relative aspect-3/2 md:aspect-square"
 						/>
 						<ProjectCard

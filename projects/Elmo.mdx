@@ -1,0 +1,91 @@
+---
+title: "Elmo"
+date: "2026-01-12"
+summary: "Human-Machine Interaction and coding"
+---
+
+## Introduction
+_Elmo_ is a navigation (eco)system that enables real collaboration between every member of group journeys before, during, and after the trips themselves, transforming navigation into a truly shared and supportive experience.
+
+## Sections
+- [· Research and interviews](#research-and-interviews)
+- [· Concept ideation](#concept-ideation)
+- [· Project development](#project-development)
+- [· Project showcase](#project-showcase)
+
+<h2 id="research-and-interviews">Research and interviews</h2>
+
+Before defining the scope of the project, using a mixed-method approach involving over 100 survey responses and semi-structured interviews we identified a critical conflict between social interaction and navigation guidance.
+Users reported that active conversations often lead to missed voice instructions, a friction supported by studies on how traditional systems tend to isolate drivers.
+These insights highlighted a clear need for a shared, _non-intrusive_ ecosystem that facilitates coordination without disrupting the natural flow of the journey.
+
+<h2 id="concept-ideation">Concept ideation</h2>
+
+To address the identified friction, we designed Elmo as a collaborative ecosystem rather than a solitary tool. The concept relies on two core pillars: *Ambient Light Guidance* and *Shared Interaction*.
+
+<RoundedImage
+  alt={`Elmo's LED guidance`}
+  title={`Elmo's LED guidance`}
+  src={`/Elmo/led.avif`}
+  className="w-full"
+/>
+
+By shifting directional cues to peripheral LED lights, the system reduces the driver’s cognitive load, allowing them to focus on both the road and the conversation.
+
+<RoundedImage
+  alt={`Elmo's shared interaction`}
+  title={`Elmo's shared interaction`}
+  src={`/Elmo/shared.avif`}
+/>
+
+Simultaneously, a synchronized multi-device interface empowers passengers to actively manage the route and stops, transforming the car interior into a flexible social space where navigation becomes a collective responsibility.
+
+<h2 id="project-development">Project development</h2>
+
+To validate the concept, we built a fully functional Minimum Viable Prototype (MVP) using React Native (Expo). The system architecture relied on a local Node.js server to handle real-time synchronization across three distinct devices:
+two iPads acting as the vehicle's front and rear dashboards, and an iPhone serving as the passenger's "controller".
+
+```js
+const coordinatesStr = [
+	start,
+	...waypoints.map((w) => w.coordinates),
+	end,
+]
+	.map((coord) => `${coord[1]},${coord[0]}`) // OSRM expects lon,lat
+	.join(";");
+
+// Get the Polyline (navigation route) from OSRM
+let url = `https://router.project-osrm.org/route/v1/driving/${coordinatesStr}?overview=full&geometries=polyline&steps=true`;
+
+// Add exclude params
+const excludes: string[] = [];
+if (options?.avoidTolls) excludes.push("toll");
+if (options?.avoidFerries) excludes.push("ferry");
+if (options?.avoidHighways) excludes.push("motorway");
+
+if (excludes.length > 0) {
+	url += `&exclude=${excludes.join(",")}`;
+}
+```
+
+We integrated OpenStreetMap to manage routing and location data, specifically utilizing its APIs to query and display nearby Points of Interest. This allowed us to populate a dedicated panel where users could browse their surroundings and seamlessly add intermediate stops to the itinerary. Meanwhile, the Llama LLM (via Groq API) powered the natural language assistant, available both via vocal and written input (with the latter being only available on the rear dashboard).
+
+<RoundedImage
+  alt={`Elmo's navigation`}
+  title={`Elmo's navigation`}
+  src={`/Elmo/navigation.avif`}
+/>
+
+To simulate the Ambient Light Guidance, we engineered a physical setup connecting a PC and an Arduino board to an LED strip, creating an immersive testing environment that mirrored a real in-car experience.
+
+<h2 id="project-showcase">Project showcase</h2>
+
+Elmo underwent a rigorous validation phase involving external testers to ensure unbiased feedback. We tested an alpha version in early December 2025, gathering insights that were crucial for refining the user interface and the ambient light behaviors.
+
+<RoundedImage
+  alt={`Elmo's testing`}
+  title={`Elmo's testing`}
+  src={`/Elmo/testing.avif`}
+/>
+
+<p className="!mb-0">This iterative process led to the development of a semi-final prototype, which was successfully presented in January 2026 at the _Mobility Futures_ exhibition held at Politecnico di Milano, in collaboration with Italdesign.</p>
