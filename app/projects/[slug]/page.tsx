@@ -46,7 +46,7 @@ export default async function ProjectPage({
 				<p className="text-zinc-500 mb-8">{project.metadata.summary}</p>
 			)}
 			<article className="prose text-sm text-zinc-800 md:text-[1rem] [&>p]:my-1.5 [&>p]:text-zinc-500 [&>h2]:mt-12 [&>h2]:text-xl md:[&>h2]:text-2xl [&>h2]:font-serif [&>ul]:mt-1.5 [&>p>a]:underline [&>p>a]:decoration-zinc-200 [&>p>a]:underline-offset-2 [&>p>a]:hover:decoration-zinc-500 [&>p>a]:transition-colors [&>p>a]:duration-300 [&>p>a]:ease-in-out [&>p>a]:cursor-pointer [&>ul>*]:underline [&>ul]:text-zinc-500 [&>ul>*]:decoration-zinc-200 [&>ul>*]:underline-offset-2 [&>ul>*]:hover:decoration-zinc-500 [&>ul>*]:transition-colors [&>ul>*]:duration-300 [&>ul>*]:ease-in-out text-pretty">
-				<MDXRemote source={project.content} components={components} />
+				<MDXRemote source={project.content} components={components} options={{ mdxOptions: { format: 'mdx' }, blockJS: false }} />
 			</article>
 		</div>
 	);

@@ -27,6 +27,7 @@ function ProjectCard({ src, href, title, className = "" }: ProjectCardProps) {
 					src={src}
 					alt={title}
 					fill
+					sizes="(max-width: 768px) 100vw, 66vw"
 					priority={true}
 					className="object-cover bg-zinc-50 transition-transform ease-in-out duration-500 max-sm:group-active:-translate-y-12 group-hover:-translate-y-12 z-10 rounded-xl"
 				/>
@@ -63,12 +64,13 @@ function ToolkitIcon({
 			target="_blank"
 		>
 			<div
-				className={`transition-transform duration-500 ease-in-out hover:scale-105 ${initialRotation} ${hoverRotation} ${className} h-16 w-16 md:h-22 md:w-22`}
+				className={`relative transition-transform duration-500 ease-in-out hover:scale-105 ${initialRotation} ${hoverRotation} ${className} h-16 w-16 md:h-22 md:w-22`}
 			>
 				<Image
 					src={src}
 					alt={alt}
 					fill
+					sizes="100px"
 					className="object-cover h-full w-full select-none pointer-events-none"
 				/>
 			</div>
