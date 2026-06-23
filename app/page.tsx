@@ -207,8 +207,8 @@ export default function Home() {
 						</h1>
 
 						<p className="font-sans text-sm md:text-lg text-zinc-500 mt-2 md:mt-1 -mb-1 md:-mb-5">
-							My daily toolkit is minimalistic but extremely efficient,
-							as&nbsp;it's&nbsp;built on these powerful tools:
+							I keep my daily stack minimalistic yet highly effective, relying
+							on&nbsp;a&nbsp;few powerful&nbsp;tools:
 						</p>
 
 						<div className="flex flex-wrap w-screen md:w-max -mx-8 px-6.5 max-sm:justify-between md:gap-3">
@@ -299,19 +299,19 @@ export default function Home() {
 					</h1>
 
 					<p className="font-sans text-sm md:text-lg text-zinc-500 mt-2 md:mt-1 text-pretty">
-						I'm currently open to work, so if you have an idea and you'd like to
-						bring it to life or you're just interested in{" "}
+						I'm always open to talking about design, coding and technology in
+						general, so if{" "}
 						<span className="italic bg-blue-50 text-blue-500">
-							working on something new together
-						</span>
-						, you can{" "}
+							you have any ideas you'd like to discuss
+						</span>{" "}
+						with me, feel free to reach out and{" "}
 						<a
 							href="mailto:ciao@filippoalessandrini.com"
 							className="underline underline-offset-2 decoration-zinc-200 hover:decoration-zinc-500 transition-colors ease-in-out duration-300"
 						>
 							book&nbsp;a&nbsp;call
-						</a>{" "}
-						with me to discuss about it.
+						</a>
+						.
 					</p>
 				</section>
 			</main>

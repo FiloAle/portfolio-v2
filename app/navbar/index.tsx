@@ -19,8 +19,11 @@ function NavEntry({
 	return (
 		<Link
 			href={href}
-			onClick={() => {
-				window.scrollTo({ top: 0, behavior: "smooth" });
+			onClick={(e) => {
+				if (currentPath === href) {
+					e.preventDefault();
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
 			}}
 			className={`h-10 w-10 rounded-full flex flex-row justify-center items-center relative z-10 transition-colors duration-500 ease-in-out ${
 				isActive ? "text-zinc-800" : "text-zinc-400"
